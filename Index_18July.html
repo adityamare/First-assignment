@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <title>
+            My first class assignment
+        </title>
+    </head>
+    <body>
+        <div class="programFirst">
+            <input id="array1" />
+            <input id="array2" />
+            <button onClick="addArraySum()">Get both array sum</button>
+        </div>
+        <div class="programSecond">
+            <h2 id="windowResize"></h2>
+        </div>
+        <div class="programThird">
+            <h2>Object rendering </h2>
+            <table border="1" cellspacing="2" cellpadding="5" >
+                <tbody  id="tableView">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="programFourth">
+            <h2>String to Array </h2>
+            <input id="strArray" />
+            <button onClick="strToArray()">str to array</button>
+            <h3 id="ansStr"></h3> 
+        </div>
+        <div class="programSeven">
+            <h2>Reverse Number </h2>
+            <input type="number" id="reverseStr" />
+            <button onClick="reverseStr()">Reverse</button>
+            <h3 id="reverseStrAns"></h3> 
+        </div>
+        <div class="programEight">
+            <h2>Longest Word </h2>
+            <input  id="longestWord" />
+            <button onClick="longString()">Longest</button>
+            <h3 id="longStringAns"></h3> 
+        </div>
+    </body>
+    <script>
+        {
+            let array1 = '1,0,2,3,4';
+            let array2 = '3,5,6,7,8,13';
+            document.getElementById('array1').value = array1
+            document.getElementById('array2').value = array2
+            addArraySum = function(){
+                let arrayFirst = document.getElementById('array1').value.split(",");
+                let arraySecond = document.getElementById('array2').value.split(",");
+                let sumBothArray = []
+                    if(arrayFirst.length > arraySecond.length){
+                        for(let i = 0; i < arrayFirst.length; i++) {
+                            debugger
+                            if(arraySecond[i] == undefined || arraySecond[i] == ''){
+                                arraySecond[i] = 0
+                            sumBothArray.push(parseInt(arrayFirst[i]) + parseInt(arraySecond[i]))
+                        }else{
+                            sumBothArray.push(parseInt(arrayFirst[i]) + parseInt(arraySecond[i]))
+                            }
+                        }
+                    }else{
+                        for(let i = 0; i < arraySecond.length; i++) {
+                            if(arrayFirst[i] == undefined || arrayFirst[i] == ''){
+                                arrayFirst[i] = 0
+                                sumBothArray.push(parseInt(arrayFirst[i]) + parseInt(arraySecond[i]))
+                            }else{
+                                sumBothArray.push(parseInt(arrayFirst[i]) + parseInt(arraySecond[i]))
+                            }
+                        }
+                    }
+            }
+        }
+        {
+            resizeWindow = function(){
+                let resizeSize = 'Width = ' + window.innerWidth + ' | ' + 'Height = ' + window.innerHeight
+                   document.getElementById('windowResize').innerHTML =  resizeSize
+                }
+            window.addEventListener('resize', resizeWindow())
+            resizeWindow()
+        }
+        {
+            var library = [ 
+                {
+                    author: 'Bill Gates',
+                    title: 'The Road Ahead',
+                    readingStatus: true
+                },
+                {
+                    author: 'Steve Jobs',
+                    title: 'Walter Isaacson',
+                    readingStatus: true
+                },
+                {
+                    author: 'Suzanne Collins',
+                    title:  'Mockingjay', 
+                    readingStatus: false
+                }];
+
+            let tableColumns = []
+                tableColumns.push('<tr><td width="150"> Author </td><td width="150"> Title </td><td width="100"> Reading Status </td></tr>');
+            for (const key in library) {
+                tableColumns.push('<tr><td>' + library[key].author + '</td><td>' + library[key].title + '</td><td>' + library[key].readingStatus + '</td></tr>');
+            }
+            document.getElementById('tableView').innerHTML = tableColumns
+        }
+        strToArray = function(){
+
+            let strToArray = document.getElementById('strArray').value.split(' ');
+            document.getElementById('ansStr').innerHTML = strToArray
+            console.log(strToArray)
+            // console.log(string_to_array("Robin Singh"));
+
+        }
+
+        reverseStr = function(){
+            let strToArray = document.getElementById('reverseStr').value;
+            let reversArray = strToArray.split('').reverse()
+            document.getElementById('reverseStrAns').innerHTML = reversArray.join("")
+        }
+
+        longString = function(){
+            let strToArray = document.getElementById('longestWord').value;
+                strToArray = strToArray.split(' ');
+            let longKeyWord = ''
+            for(let i=0; i < strToArray.length; i++){
+                if(longKeyWord.length <= strToArray[i].length){
+                    console.log(longKeyWord)
+                    longKeyWord = strToArray[i]
+                }
+            }
+
+            document.getElementById('longStringAns').innerHTML = longKeyWord
+        }
+
+        
+    </script>
+</html>
