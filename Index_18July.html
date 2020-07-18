@@ -27,6 +27,12 @@
             <button onClick="strToArray()">String to array</button>
             <h3 id="ansStr"></h3> 
         </div>
+        <div class="programFive">
+            <h2>Prime No </h2>
+            <input type="number" id="primeNo" />
+            <button onClick="primeNumber()">String to array</button>
+            <h3 id="primeNoAns"></h3> 
+        </div>
         <div class="programSeven">
             <h2>Reverse Number </h2>
             <input type="number" id="reverseStr" />
@@ -132,6 +138,20 @@
             }
 
             document.getElementById('longStringAns').innerHTML = longKeyWord
+        }
+
+        primeNumber = function(){
+            let strToArray = document.getElementById('primeNo').value;
+            for(let i = 2; i <= 100; i++){
+                if(parseInt(strToArray) % i != 0){
+                    alert('prime no')
+                    break; 
+                }else{
+                    alert('this is not prime no')
+                    break; 
+                }
+            }
+            document.getElementById('primeNoAns').innerHTML = 'longKeyWord'
         }
 
         
